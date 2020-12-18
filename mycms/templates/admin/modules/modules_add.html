@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %}
+{% import 'admin/macros.html' as macros %}
+{% block title %}CMS - Dashboard / Modules / Add Module  {% endblock %}
+{% block content %}
+    <div class="">
+        <div class="page-header-title">
+            <h3 class="page-title"> <a class="btn btn-outline-info" href="{{ url_for('admin.module_list') }}"><i class="fas fa-arrow-left"></i></a> Dashboard / Modules</h3>
+        </div>
+    </div>
+    <div class="page-content-wrapper ">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Basic example -->
+                <div class="col-lg-12 ">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="m-t-0 m-b-5">Add Module</h3>
+                            <form action="{{ url_for('admin.module_add')}}", method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                                {{ macros.render_form_field(form.name) }}
+                                {{ macros.render_form_field(form.description) }}
+                                {{ macros.render_form_field(form.long_description) }}
+                                {{ macros.render_form_field(form.demo_url) }}
+                                {{ macros.render_form_field(form.code_path) }}
+                                {{ macros.render_form_field(form.price) }}
+                                {{ macros.render_form_field(form.support_price) }}
+                                {{ macros.render_form_field(form.image) }}
+                                {{ macros.render_form_field(form.images) }}
+                                {{ macros.render_form_field(form.tags) }}
+                                {{ macros.render_form_field(form.release_date) }}
+                                {{ macros.render_form_field(form.last_update_date) }}
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Add Module</button>
+                                </div>
+                            </form>
+                        </div><!-- card-body -->
+                    </div> <!-- card -->
+                </div> <!-- col-->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ url_for('static', filename='plugins/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            CKEDITOR.replace('long_description');
+        })
+    </script>
+{% endblock %}
