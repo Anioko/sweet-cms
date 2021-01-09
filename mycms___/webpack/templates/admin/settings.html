@@ -1,0 +1,41 @@
+{% extends 'admin/base.html' %}
+{% block title %}CMS - Dashboard / Settings / Edit Settings{% endblock %}
+
+{% block content %}
+    <div class="">
+        <div class="page-header-title">
+            <h3 class="page-title"> Dashboard / Settings</h3>
+        </div>
+    </div>
+    <div class="page-content-wrapper ">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Basic example -->
+                <div class="col-lg-12 ">
+                    <div class="card">
+                        <div class="card-body">
+                            {% include 'admin/includes/flashes.html' %}
+                            <h3 class="m-t-0 m-b-5">Edit Settings</h3>
+                            <form action=""  method="POST">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                                {% for setting in settings %}
+                                    <div class="form-group">
+                                        <label for="{{ setting.name }}">{{ setting.display_name }}</label>
+                                        <input class="form-control"
+                                               id="{{ setting.name }}" name="{{ setting.name }}"
+                                               placeholder="Enter {{ setting.display_name }}" required="" type="text"
+                                               value="{{ setting.value }}">
+
+                                    </div>
+                                {% endfor %}
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Update Settings</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

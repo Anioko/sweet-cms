@@ -1,0 +1,21 @@
+{% extends 'client/master.html' %}
+{% import 'public/macros.html' as macros %}
+{% block page_title %}Home / Brand Info{% endblock %}
+{% block account_content %}
+    <div class="row">
+        <h4 class="mb-3 ml-4">Edit Brand Info</h4>
+        <form class="col-12 form-horizontal m-t-20" action="" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            {{ macros.render_form_field(form.name) }}
+            {{ macros.render_form_field(form.email) }}
+            {{ macros.render_form_field(form.image) }}
+            {{ macros.render_form_field(form.site_link) }}
+
+                        <div class="form-group text-center m-t-40">
+                <div class="col-4 mr-auto ml-auto text-center">
+                    <button class="btn btn-block text-center btn-lg waves-effect waves-light" type="submit">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

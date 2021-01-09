@@ -1,0 +1,10 @@
+
+{% extends "public/layout.html" %}
+{% block content %}
+    <div class="container">
+        <h1>Welcome {{ current_user.username }}</h1>
+        <h3>This is the members-only page.</h3>
+    <a href="{{ url_for("user.logout_of_system") }}">Logout</a>
+    </div>
+{% endblock %}
+

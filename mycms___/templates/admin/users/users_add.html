@@ -1,0 +1,36 @@
+{% extends "admin/base.html" %}
+{% import 'admin/macros.html' as macros %}
+{% block title %}CMS - Dashboard / Clients / Add Client  {% endblock %}
+{% block content %}
+    <div class="">
+        <div class="page-header-title">
+            <h3 class="page-title"> <a class="btn btn-outline-info" href="{{ url_for('admin.user_list') }}"><i class="fas fa-arrow-left"></i></a> Dashboard / Clients</h3>
+        </div>
+    </div>
+    <div class="page-content-wrapper ">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Basic example -->
+                <div class="col-lg-12 ">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="m-t-0 m-b-5">Add Client</h3>
+                            <form action="{{ url_for('admin.user_add')}}", method="POST">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                                {{ macros.render_form_field(form.username) }}
+                                {{ macros.render_form_field(form.email) }}
+                                {{ macros.render_form_field(form.first_name) }}
+                                {{ macros.render_form_field(form.last_name) }}
+                                {{ macros.render_form_field(form.password) }}
+                                {{ macros.render_form_field(form.confirm) }}
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Add Client</button>
+                                </div>
+                            </form>
+                        </div><!-- card-body -->
+                    </div> <!-- card -->
+                </div> <!-- col-->
+            </div>
+        </div>
+    </div>
+{% endblock %}

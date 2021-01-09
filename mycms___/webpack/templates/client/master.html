@@ -1,0 +1,50 @@
+{% extends 'public/layout.html' %}
+{% block content %}
+    <main>
+        <section class="breadcrumb-area products-breadcrumb-area d-flex align-items-center" data-background="{{ url_for('static', filename='web/img/bg/breadcrumb_bg02.jpg')}}" style="min-height:200px;background-image: url(&quot;img/bg/breadcrumb_bg02.jpg&quot;);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcrumb-wrap text-center pt-0">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ url_for('public.home') }}">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="product-area gray-bg pt-120 pb-120">
+            <div class="container">
+                <div class="t-product-wrap">
+                {% include 'public/includes/flashes.html' %}
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <aside class="product-sidebar">
+                                <div class="widget">
+                                    <div class="single-product-widget mb-30">
+                                        <h4 class="p-sidebar-title">My Account</h4>
+                                        <div class="p-sidebar-cat">
+                                            <ul>
+                                                <li><a class="{% if 'client.account' in request.endpoint %}active{% endif %}" href="{{ url_for('client.account') }}">Edit Info<span><i class="fa fa-user"></i></span></a></li>
+                                                <li><a class="{% if 'client.brand' in request.endpoint %}active{% endif %}" href="{{ url_for('client.brand') }}">Brand Info<span><i class="fa fa-umbrella"></i></span></a></li>
+                                                <li><a class="{% if 'client.download' in request.endpoint %}active{% endif %}" href="{{ url_for('client.download') }}">My Products<span><i class="fa fa-shopping-cart"></i></span></a></li>
+                                                <li><a href="{{ url_for('public.logout') }}">Logout<span><i class="fa fa-lock"></i></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="col-lg-8">
+                            {% block account_content %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

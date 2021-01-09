@@ -1,0 +1,32 @@
+{% extends "admin/base.html" %}
+{% import 'admin/macros.html' as macros %}
+{% block title %}CMS - Dashboard / Home / Add Resource Text  {% endblock %}
+{% block content %}
+    <div class="">
+        <div class="page-header-title">
+            <h3 class="page-title"> <a class="btn btn-outline-info" href="{{ url_for('admin.privacy_home')}}"><i class="fas fa-arrow-left"></i></a> Dashboard / Privacy </h3>
+        </div>
+    </div> 
+    <div class="page-content-wrapper ">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Basic example -->
+                <div class="col-lg-12 ">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="m-t-0 m-b-5">Add Resource Text For Resource Role</h3>
+                            <form action="{{ url_for('admin.resource_new_add', role_id=role_id.id) }}" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                                {{ macros.render_form_field(form.title)}}
+                                {{ macros.render_form_field(form.description)}}
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Save Resource Details For Role</button>
+                                </div>
+                            </form>
+                        </div><!-- card-body -->
+                    </div> <!-- card -->
+                </div> <!-- col-->
+            </div>
+        </div>
+    </div>
+{% endblock %}

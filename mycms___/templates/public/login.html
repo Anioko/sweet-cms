@@ -1,0 +1,41 @@
+{% extends "public/layout.html" %}
+{% import 'public/macros.html' as macros%}
+{% block styles %}
+    <style>
+        .menu-area {
+            box-shadow: none;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <main>
+        <section class="contact-area pt-120 pb-120 gray-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="section-title s-section-title mb-40">
+                            <span>Login</span>
+                        </div>
+                        <div class="contact-form">
+                            <form action="" method="POST">
+                                {{ form.csrf_token }}
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        {{ macros.render_form_field(form.username) }}
+                                    </div>
+                                    <div class="col-md-5">
+                                        {{ macros.render_form_field(form.password) }}
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn ml-auto">Login</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

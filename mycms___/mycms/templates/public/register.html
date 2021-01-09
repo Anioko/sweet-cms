@@ -1,0 +1,107 @@
+{% extends "public/layout.html" %}
+{% block styles %}
+    <style>
+        .menu-area {
+            box-shadow: none;
+        }
+    .contact-form input {
+        padding: 7px 8px;
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+    <main>
+        <section class="contact-area pt-120 pb-120 gray-bg" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="contact-wrap">
+                            <div class="section-title s-section-title white-title contact-title mb-25">
+                                <span>information</span>
+                                <h2>Office Information</h2>
+                            </div>
+                            <div class="contact-info-list">
+                                <ul>
+                                    <li>
+                                        <h5>Office Locations</h5>
+                                        <span>W8 Steet Capital 7TH Lan Roas New York Brooklyn, New York</span>
+                                    </li>
+                                    <li>
+                                        <h5>Contact Number</h5>
+                                        <span>(+02) 124 326 4587</span>
+                                        <span>(+02) 124 326 4588</span>
+                                    </li>
+                                    <li>
+                                        <h5>Mail Support</h5>
+                                        <span>infocompany@mail.com</span>
+                                        <span>info@exemple.com</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-6">
+                        <div class="section-title s-section-title mb-40">
+                            <span>Enter your details & get started</span>
+                            <h2>Register Now</h2>
+                        </div>
+                        <div class="contact-form">
+                            <form id="registerForm" class="form form-register" method="POST" action="" role="form">
+                                {{ form.csrf_token }}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{form.username(placeholder="Username", class_="form-control {}".format("is-invalid" if form.username.errors else "" ))}}
+                                        {% if form.username.errors %}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.username.errors %}
+                                                    {{ error }}<br>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{form.email(placeholder="Email", class_="form-control {}".format("is-invalid" if form.email.errors else "" ))}}
+                                        {% if form.email.errors %}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.email.errors %}
+                                                    {{ error }}<br>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{form.password(placeholder="Password", class_="form-control {}".format("is-invalid" if form.password.errors else "" ))}}
+                                        {% if form.password.errors %}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.password.errors %}
+                                                    {{ error }}<br>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{form.confirm(placeholder="Password (again)", class_="form-control {}".format("is-invalid" if form.confirm.errors else "" ))}}
+                                        {% if form.confirm.errors %}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.confirm.errors %}
+                                                    {{ error }}<br>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                    <br>
+                                    <button class="btn">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+

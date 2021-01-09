@@ -1,0 +1,22 @@
+{% extends 'public/layout.html' %}
+{% block content %}
+    <main>
+        <section class="breadcrumb-area d-flex align-items-center" data-background="{{url_for('static', filename='web/img/bg/breadcrumb_bg.jpg')}}" style="background-image: url(&quot;img/bg/breadcrumb_bg.jpg&quot;);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcrumb-wrap text-center">
+                            <h2>Under Construction</h2>
+                            <p>This section is still under construction, come back later.</p><br>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ url_for('public.home') }}">Go to Home</a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

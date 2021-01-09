@@ -1,0 +1,38 @@
+{% macro render_form_field(field, extra_classes='') %}
+    <div class="form-group">
+        {{ field.label }}
+        {{ field(class_="form-control {}".format("parsley-error" if field.errors else "" ), placeholder="Enter "+field.label.text) }}
+        {% if field.errors %}
+            <ul class="parsley-errors-list filled">
+            {% for error in field.errors %}
+                <li class="parsley-required">{{ error }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endmacro %}
+{%  macro links(source) %}
+    {% if source.pages > 1 %}
+        <ul class="pagination m-b-5">
+            <li class="page-item">
+                <a class="page-link {% if not source.prev_num %}disabled{% endif %}" {% if source.prev_num %} href="{{ url_for(request.endpoint, page=source.prev_num) }}" {% endif %} aria-label="Previous">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            </li>
+            {% for page in source.iter_pages() %}
+                {% if page %}
+                    {% if page != source.page %}
+                        <li class="page-item"><a href="{{ url_for(request.endpoint, page=page) }}" class="page-link">{{ page }}</a></li>
+                    {% else %}
+                        <li class="page-item active"><a href="{{ url_for(request.endpoint, page=page) }}" class="page-link">{{ page }}</a></li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            <li class="page-item">
+                <a class="page-link {% if not source.next_num %}disabled{% endif %}" {% if source.next_num %} href="{{ url_for(request.endpoint, page=source.next_num) }}" {% endif %} aria-label="Next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    {% endif %}
+{% endmacro %}
