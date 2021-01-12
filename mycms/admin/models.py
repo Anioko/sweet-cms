@@ -29,7 +29,7 @@ class Module(PkModel):
 
     @property
     def image_url(self):
-        return url_for('_uploads.uploaded_file', setname='images', filename=self.image_filename, _external=True)
+        return url_for('_uploads.uploaded_file', setname='images', filename=self.image_filename, external=True)
 
     @property
     def image_path(self):
@@ -51,7 +51,7 @@ class ModuleImage(PkModel):
 
     @property
     def image_url(self):
-        return url_for('_uploads.uploaded_file', setname='images', filename=self.image_filename, _external=True)
+        return url_for('_uploads.uploaded_file', setname='images', filename=self.image_filename, external=True)
 
     @property
     def image_path(self):
@@ -67,7 +67,7 @@ class SlideShowImage(PkModel):
 
     @property
     def image_url(self):
-        return url_for('_uploads.uploaded_file', setname='images',filename=self.image_filename, _external=True)
+        return url_for('_uploads.uploaded_file', setname='images',filename=self.image_filename, external=True)
 
 
     @property
@@ -110,7 +110,7 @@ class TechnologiesImage(PkModel):
 
     @property
     def image_url(self):
-        return url_for('_uploads.uploaded_file', setname='images',filename=self.image, _external=True)
+        return url_for('_uploads.uploaded_file', setname='images',filename=self.image, external=True)
 
     @property
     def image_path(self):
@@ -124,7 +124,7 @@ class Logo(PkModel):
 
     @property
     def image_url(self):
-        return url_for('_uploads.uploaded_file', setname='images', filename=self.logo_image, _external=True)
+        return url_for('_uploads.uploaded_file', setname='images', filename=self.logo_image, external=True)
 
     @property
     def image_path(self):
